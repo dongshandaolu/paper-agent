@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <rect width="720" height="420" fill="#f8fafc"/>
+  <text x="360" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">Agentic RAG 管线</text>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect x="160" y="50" width="400" height="40" rx="6" fill="#1e40af"/>
+  <text x="360" y="75" text-anchor="middle" fill="white" font-size="12" font-weight="600">用户问题</text>
+  <path d="M360 90 L360 110" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="160" y="118" width="400" height="50" rx="6" fill="#3b82f6"/>
+  <text x="360" y="148" text-anchor="middle" fill="white" font-size="12" font-weight="600">Hybrid Retriever (章节优先 + TF-IDF/Embedding)</text>
+  <path d="M360 168 L360 182" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="160" y="190" width="400" height="36" rx="6" fill="#6366f1"/>
+  <text x="360" y="213" text-anchor="middle" fill="white" font-size="12" font-weight="600">Top-K 初筛 (RCS_TOP_K=20)</text>
+  <path d="M360 226 L360 240" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="160" y="248" width="400" height="50" rx="6" fill="#8b5cf6"/>
+  <text x="360" y="278" text-anchor="middle" fill="white" font-size="12" font-weight="600">RCS 重排 + 上下文摘要</text>
+  <path d="M360 298 L360 312" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="160" y="320" width="400" height="36" rx="6" fill="#a855f7"/>
+  <text x="360" y="343" text-anchor="middle" fill="white" font-size="12" font-weight="600">Top-N 精排 (RCS_FINAL_K=5)</text>
+  <path d="M360 356 L360 370" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="160" y="378" width="400" height="36" rx="6" fill="#ec4899"/>
+  <text x="360" y="401" text-anchor="middle" fill="white" font-size="12" font-weight="600">LLM 生成答案 + Citation Verifier</text>
+</svg>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 280" font-family="Microsoft YaHei, Segoe UI, sans-serif">
+  <rect width="700" height="280" fill="#f8fafc"/>
+  <text x="350" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#0f172a">问答工作流 (ask) - 含反思循环</text>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <circle cx="50" cy="120" r="26" fill="#22c55e"/><text x="50" y="125" text-anchor="middle" fill="white" font-size="10" font-weight="600">START</text>
+  <path d="M76 120 L116 120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="118" y="92" width="88" height="56" rx="6" fill="#3b82f6"/><text x="162" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="600">parser</text>
+  <path d="M206 120 L246 120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="248" y="92" width="88" height="56" rx="6" fill="#ec4899"/><text x="292" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="600">qa</text>
+  <path d="M336 120 L376 120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="378" y="92" width="100" height="56" rx="6" fill="#a855f7"/><text x="428" y="125" text-anchor="middle" fill="white" font-size="11" font-weight="600">reflect</text>
+  <path d="M478 120 L528 120" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="503" y="108" text-anchor="middle" fill="#22c55e" font-size="9">通过</text>
+  <circle cx="560" cy="120" r="26" fill="#ef4444"/><text x="560" y="125" text-anchor="middle" fill="white" font-size="10" font-weight="600">END</text>
+  <path d="M428 148 L428 210 L292 210 L292 148" stroke="#ef4444" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <text x="360" y="235" text-anchor="middle" fill="#ef4444" font-size="10">不通过: 改写 query 后重检索 (最多 2 轮)</text>
+  <text x="350" y="265" text-anchor="middle" fill="#475569" font-size="10">qa 内部: Hybrid Retriever - RCS - LLM - Citation Verifier</text>
+</svg>

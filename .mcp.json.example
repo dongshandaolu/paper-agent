@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "paper-agent": {
+      "command": "paper-agent-mcp",
+      "args": [],
+      "env": {
+        "OPENAI_API_BASE": "https://api.deepseek.com/v1",
+        "OPENAI_API_KEY": "your-api-key",
+        "MODEL_NAME": "deepseek-chat",
+        "EMBEDDING_MODEL": "text-embedding-3-small"
+      }
+    }
+  }
+}

@@ -103,6 +103,8 @@ class TermExplanation(BaseModel):
     term: str
     definition_in_paper: str = ""
     plain_explanation: str = ""
+    math_expression: str = ""          # LaTeX 格式的数学表达式（如有）
+    math_explanation: str = ""         # 对数学表达式的逐符号说明
     related_terms: list[str] = Field(default_factory=list)
     section: str = ""
     page: int = 0

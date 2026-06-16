@@ -103,8 +103,8 @@ def explain_terms(
         query = " ".join(terms)
         terms_hint = "、".join(terms)
     else:
-        query = "key technical terms definitions abbreviations methodology"
-        terms_hint = "（自动提取，最多 {} 个）".format(max_terms)
+        query = "key technical terms definitions abbreviations methodology equations formula loss function"
+        terms_hint = "（自动提取，最多 {} 个，含关键数学公式）".format(max_terms)
 
     evidence = gather_evidence(document.doc_id, query, document=document, top_k_final=8)
     context = format_evidence_context(evidence)

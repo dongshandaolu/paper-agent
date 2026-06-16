@@ -30,11 +30,34 @@ NOISE_PATTERNS = [
     re.compile(r"^(Proceedings|Conference|Journal|arXiv)", re.I),
 ]
 
+# 标题噪声：arXiv 版本号、日期行、版权声明等不应作为论文标题的文本模式
+TITLE_NOISE_PATTERNS = [
+    re.compile(r"arxiv\s*:", re.I),                          # arXiv:1706.xxxxx
+    re.compile(r"\[\s*cs\.", re.I),                          # [cs.CL]
+    re.compile(r"^\d{1,2}\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)", re.I),  # 2 Aug 2023
+    re.compile(r"\b(20\d{2}|19\d{2})\b.*\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\b", re.I),
+    re.compile(r"^v\d+\b", re.I),                            # v7, v2
+    re.compile(r"preprint|under review|submitted to", re.I),
+    re.compile(r"^copyright|\(c\)\s*\d{4}", re.I),
+    re.compile(r"provided proper attribution", re.I),
+    re.compile(r"google hereby grants", re.I),
+    re.compile(r"^https?://", re.I),
+    re.compile(r"^\*\s*equal contribution", re.I),
+]
+
 SUBSECTION_PATTERN = re.compile(r"^(\d+\.\d+)\s+(.+)$")
 
 
 def _doc_id_from_path(path: str) -> str:
     return hashlib.sha256(Path(path).resolve().as_posix().encode()).hexdigest()[:16]
+
+
+def _is_title_noise(text: str) -> bool:
+    """判断文本是否为标题区域的噪声（版本号、日期、版权声明等）"""
+    for pat in TITLE_NOISE_PATTERNS:
+        if pat.search(text):
+            return True
+    return False
 
 
 def _extract_title(page: fitz.Page) -> str:
@@ -47,7 +70,7 @@ def _extract_title(page: fitz.Page) -> str:
             for span in line.get("spans", []):
                 text = span.get("text", "").strip()
                 size = span.get("size", 0)
-                if len(text) > 8 and size >= 12:
+                if len(text) > 8 and size >= 12 and not _is_title_noise(text):
                     candidates.append((size, text))
     if not candidates:
         return "Untitled"

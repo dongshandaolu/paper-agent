@@ -86,9 +86,16 @@ FULL_REPORT_TEMPLATE = """# {{ title }} — 阅读笔记
 
 {% for t in terminology.terms %}
 ### {{ t.term }} [{{ t.section }}, p.{{ t.page }}]
-{% if t.definition_in_paper %}- 论文表述: {{ t.definition_in_paper }}{% endif %}
-- 通俗解释: {{ t.plain_explanation }}
-{% if t.related_terms %}- 相关术语: {{ ', '.join(t.related_terms) }}{% endif %}
+{% if t.definition_in_paper %}- **论文表述**: {{ t.definition_in_paper }}{% endif %}
+- **通俗解释**: {{ t.plain_explanation }}
+{% if t.math_expression %}
+- **数学表达式**:
+
+$${{ t.math_expression }}$$
+
+{% if t.math_explanation %}- **符号说明**: {{ t.math_explanation }}{% endif %}
+{% endif %}
+{% if t.related_terms %}- **相关术语**: {{ ', '.join(t.related_terms) }}{% endif %}
 
 {% endfor %}
 ---
